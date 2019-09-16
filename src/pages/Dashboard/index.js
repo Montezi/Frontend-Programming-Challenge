@@ -47,12 +47,44 @@ export default function Dashboard() {
       </Content>
       <ContentCard>
         <CardLeft>
-          <strong>Número de instalações feitas</strong>
-          <span>Valor Total</span>
-          <span>Estado</span>
+          <div>
+            <strong>Número de instalações feitas</strong>
+          </div>
+          <div>
+            <span>Valor Total</span>
+            <p>35</p>
+          </div>
+          <div>
+            <span>Estado</span>
+            <p>CA</p>
+          </div>
         </CardLeft>
-        <CardMiddle />
-        <CardRight />
+        <CardMiddle>
+          <div>
+            <strong>Instalação com maior custo</strong>
+          </div>
+          <div>
+            <span>CEP</span>
+            <p>20775-080</p>
+          </div>
+          <div>
+            <span>Custo</span>
+            <p>$2.222.00</p>
+          </div>
+        </CardMiddle>
+        <CardRight>
+          <div>
+            <strong>Maior número de instalações</strong>
+          </div>
+          <div>
+            <span>Meses</span>
+            <p>Abril, Setembro e Dezembro</p>
+          </div>
+          <div>
+            <span>Total instalado</span>
+            <p>1.000</p>
+          </div>
+        </CardRight>
       </ContentCard>
     </Container>
   );

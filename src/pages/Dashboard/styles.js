@@ -41,39 +41,104 @@ export const ContentRight = styled.div`
 export const ContentCard = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 30px;
   padding: 0 50px 0 50px;
+  margin: 10px;
 `;
 
 export const CardLeft = styled.div`
   display: flex;
-  height: 280px;
-  width: 340px;
-  background-image: linear-gradient(109.6deg, #ffa8ee 11.2%, #fdc88d 91.1%);
-  border-radius: 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 20px;
+
+  height: 240px;
+  width: 350px;
+  background-image: linear-gradient(45deg, #fdc88d 0%, #ffa8ee 100%);
+  border-radius: 5px;
   color: #fff;
+
+  div {
+    margin-left: 20px;
+  }
+
   strong {
-    align-items: flex-start;
     font-size: 18px;
     width: 100%;
-    margin-left: 10px;
   }
   span {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
+  }
+  p {
+    font-size: 24px;
+    margin-top: 10px;
   }
 `;
 
 export const CardMiddle = styled.div`
-  height: 280px;
-  width: 340px;
-  background-image: linear-gradient(109.6deg, #79d9ff 11.2%, #40f0b2 91.1%);
-  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 20px;
+  height: 240px;
+  width: 350px;
+  background:linear-gradient(#79d9ff, #50f0b2);
+}
+  border-radius: 5px;
+  color: #fff;
+
+  div {
+    margin-left: 20px;
+  }
+
+  strong {
+    font-size: 18px;
+    width: 100%;
+  }
+  span {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 24px;
+    margin-top: 10px;
+  }
 `;
 
 export const CardRight = styled.div`
-  height: 280px;
-  width: 340px;
-  background-image: linear-gradient(109.6deg, #789fff 11.2%, #d6a0fe 91.1%);
-  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 20px;
+  height: 240px;
+  width: 350px;
+  background-image: radial-gradient(
+    circle farthest-corner at 0.4% -0.6%,
+    #789fff 0%,
+    #d6a0fe 90%
+  );
+
+  border-radius: 5px;
+  color: #fff;
+
+  div {
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
+
+  strong {
+    font-size: 18px;
+    width: 100%;
+  }
+  span {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 24px;
+    margin-top: 10px;
+  }
 `;
