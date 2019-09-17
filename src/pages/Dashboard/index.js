@@ -28,7 +28,7 @@ export default function Dashboard() {
   const [loadingMaxCost, setLoadingMaxCost] = useState(true);
   const [
     loadingMaxNumberInstallation,
-    setloadingmaxNumberInstallation,
+    setLoadingMaxNumberInstallation,
   ] = useState(true);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMaxCost() {
-      const response = await api.get(`panels/search/maxInstallationController`);
+      const response = await api.get(`panels/search/maxInstallation`);
 
       setMaxCost(response.data[0]);
       setLoadingMaxCost(false);
@@ -52,19 +52,18 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMaxNumberInstallation() {
-      const response = await api.get(
-        `panels/search/maxNumberInstallationController`
-      );
+      const response = await api.get(`panels/search/maxNumberInstallation`);
 
       let totalQtd = 0;
       response.data.map(item => {
+        // eslint-disable-next-line radix
         totalQtd = parseInt(item.qtd) + parseInt(totalQtd);
         return totalQtd;
       });
       setTotalInstallation(totalQtd);
 
       setMaxNumberInstallation(response.data);
-      setloadingmaxNumberInstallation(false);
+      setLoadingMaxNumberInstallation(false);
     }
     loadMaxNumberInstallation();
   }, []);
@@ -191,16 +190,26 @@ export default function Dashboard() {
             <strong>Maior número de instalações</strong>
           </div>
           <div className="months">
-            {maxNumberInstallation.map((item, index) => (
-              <div key={index}>
-                <span>{getMonth(item.mes)}</span>
-                <p>{item.qtd}</p>
+            {loadingMaxNumberInstallation ? (
+              <div>
+                <p>Carregando...</p>
               </div>
-            ))}
+            ) : (
+              maxNumberInstallation.map(item => (
+                <div key={item.mes}>
+                  <span>{getMonth(item.mes)}</span>
+                  <p>{item.qtd}</p>
+                </div>
+              ))
+            )}
           </div>
           <div>
             <span>Total instalado</span>
-            <p>{totalInstallation}</p>
+            <p>
+              {loadingMaxNumberInstallation
+                ? 'Carregando ...'
+                : totalInstallation}
+            </p>
           </div>
         </CardRight>
       </ContentCard>
