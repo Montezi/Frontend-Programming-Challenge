@@ -84,8 +84,8 @@ export const CardMiddle = styled.div`
   margin: 20px;
   height: 240px;
   width: 350px;
-  background:linear-gradient(#79d9ff, #50f0b2);
-}
+  background: linear-gradient(#79d9ff, #50f0b2);
+
   border-radius: 5px;
   color: #fff;
 
@@ -127,6 +127,12 @@ export const CardRight = styled.div`
   div {
     margin-left: 20px;
     margin-bottom: 0;
+  }
+  div.months {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 0;
   }
 
   strong {
