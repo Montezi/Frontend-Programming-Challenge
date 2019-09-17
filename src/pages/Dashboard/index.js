@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Line } from 'react-chartjs-2';
 
 import api from '../../services/api';
 
@@ -8,6 +9,7 @@ import {
   Content,
   ContentLeft,
   ContentRight,
+  ContentGraph,
   ContentCard,
   CardLeft,
   CardMiddle,
@@ -30,6 +32,64 @@ export default function Dashboard() {
     loadingMaxNumberInstallation,
     setLoadingMaxNumberInstallation,
   ] = useState(true);
+
+  const [dadosGraph, setDadosGraph] = useState([]);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    async function loadGraph() {
+      const response = await api.get('panels/search/graph');
+      const graphData = response.data.map(value => {
+        const totalValue = value.total;
+        return totalValue;
+      });
+
+      const graphLabel = response.data.map(label => {
+        let labelValue = [];
+        labelValue = label.ano;
+        return labelValue;
+      });
+
+      const dataGraph = {
+        labels: graphLabel,
+        datasets: [
+          {
+            data: graphData,
+            fill: false,
+            borderColor: '#66B9C4',
+          },
+        ],
+      };
+
+      const optionsData = {
+        legend: {
+          display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#FFF',
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#FFF',
+              },
+            },
+          ],
+        },
+        responsive: false,
+        maintainAspectRatio: false,
+      };
+      setDadosGraph(dataGraph);
+      setOptions(optionsData);
+    }
+    loadGraph();
+  }, []);
 
   useEffect(() => {
     async function loadNumInstalacoes() {
@@ -152,6 +212,9 @@ export default function Dashboard() {
           />
         </ContentRight>
       </Content>
+      <ContentGraph>
+        <Line data={dadosGraph} options={options} height={90} />
+      </ContentGraph>
       <ContentCard>
         <CardLeft>
           <div>

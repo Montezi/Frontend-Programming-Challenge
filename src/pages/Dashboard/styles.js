@@ -38,11 +38,18 @@ export const ContentRight = styled.div`
   }
 `;
 
+export const ContentGraph = styled.div`
+  display: block;
+  padding: 0 50px 30px 50px;
+  margin-bottom: 20px;
+  max-height: 300px;
+`;
+
 export const ContentCard = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 50px 0 50px;
-  margin: 10px;
+  padding: 50px 50px 0px 50px;
+  /* margin: 10px; */
 `;
 
 export const CardLeft = styled.div`
